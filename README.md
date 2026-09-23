@@ -10,12 +10,18 @@ The portable `plugin.json` makes the package discoverable by hosts supporting th
 
 You need a current Codex CLI or desktop app. Bun is needed only when a selected `poteto-mode` playbook runs its bundled TypeScript scripts. GitHub CLI and Graphite are optional and only matter for workflows that call them.
 
+**Codex desktop:** Open the Plugins Directory, choose **Add Marketplace → Add from a repository**, enter `https://github.com/chiewoscar/pstack-codex`, then install **pstack for Codex**.
+
+**CLI:** Run these as two separate commands:
+
 ```sh
 codex plugin marketplace add chiewoscar/pstack-codex
 codex plugin add pstack-codex@pstack-codex
 ```
 
-The first command registers the marketplace; it does not install the plugin. In the desktop app, restart if the marketplace is not yet visible, then find **pstack for Codex** in the Plugins Directory. Start a new Codex task after installation so its skills are discovered. To update after a release, run `codex plugin marketplace upgrade pstack-codex` and install again.
+You can also [download the source ZIP from GitHub](https://github.com/chiewoscar/pstack-codex/archive/refs/heads/main.zip). After extracting it, run `codex plugin marketplace add .` from the extracted repository root, then `codex plugin add pstack-codex@pstack-codex`. Downloading alone does not activate a Codex plugin.
+
+Start a new Codex task after installation so its skills are discovered. If the marketplace is not visible in the desktop app, restart it. To update a CLI installation after a release, run `codex plugin marketplace upgrade pstack-codex` and install again.
 
 ## First use
 

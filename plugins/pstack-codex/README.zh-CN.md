@@ -10,12 +10,18 @@
 
 需要较新的 Codex CLI 或桌面版。只有运行 `poteto-mode` 附带的 TypeScript 脚本时才需要 Bun。GitHub CLI 和 Graphite 分别只对依赖它们的 PR 或分支堆栈流程有用。
 
+**Codex 桌面版：** 打开 Plugins Directory，选择 **Add Marketplace → Add from a repository**，输入 `https://github.com/chiewoscar/pstack-codex`，然后安装 **pstack for Codex**。
+
+**CLI：** 分别运行以下两条命令：
+
 ```sh
 codex plugin marketplace add chiewoscar/pstack-codex
 codex plugin add pstack-codex@pstack-codex
 ```
 
-第一条命令只注册 marketplace，不会安装插件。如果桌面版还看不到它，重启应用，然后在 Plugins Directory 选择 **pstack for Codex**。安装后请新建 Codex 任务，让新技能被加载。发布新版本后，可运行 `codex plugin marketplace upgrade pstack-codex`，再安装一次。
+也可以[从 GitHub 直接下载源码 ZIP](https://github.com/chiewoscar/pstack-codex/archive/refs/heads/main.zip)。解压后在仓库根目录运行 `codex plugin marketplace add .`，再运行 `codex plugin add pstack-codex@pstack-codex`。仅下载文件不会在 Codex 中启用插件。
+
+安装后请新建 Codex 任务，让新技能被加载。如果桌面版还看不到 marketplace，可重启应用。CLI 版本发布更新后，可运行 `codex plugin marketplace upgrade pstack-codex`，再安装一次。
 
 ## 开始使用
 
