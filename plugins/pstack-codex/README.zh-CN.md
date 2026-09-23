@@ -8,35 +8,14 @@
 
 ## 安装
 
-需要较新的 Codex CLI 或桌面版。克隆方式需要 Git。只有运行 `poteto-mode` 附带的 TypeScript 脚本时才需要 Bun。GitHub CLI 和 Graphite 分别只对依赖它们的 PR 或分支堆栈流程有用。
-
-**不需要 `npx` 安装器。** 这个仓库通过 Codex 自带的 `codex plugin` 命令安装；它没有发布独立的 Node 包，因此不应写成 `npx install`。
-
-### 从 GitHub marketplace 安装
+需要较新的 Codex CLI 或桌面版。只有运行 `poteto-mode` 附带的 TypeScript 脚本时才需要 Bun。GitHub CLI 和 Graphite 分别只对依赖它们的 PR 或分支堆栈流程有用。
 
 ```sh
 codex plugin marketplace add chiewoscar/pstack-codex
 codex plugin add pstack-codex@pstack-codex
 ```
 
-第一条命令只注册 marketplace，不会安装插件。如果桌面版还看不到它，重启应用，然后在 Plugins Directory 选择 **pstack for Codex**。安装后请新建 Codex 任务，让新技能被加载。
-
-### 从 ZIP 或本地克隆安装
-
-可在 GitHub 点击 **Code → Download ZIP**，也可以克隆：
-
-```sh
-git clone https://github.com/chiewoscar/pstack-codex.git
-```
-
-解压后，将 Codex 指向**仓库根目录**，也就是包含 `.agents/plugins/marketplace.json` 的文件夹：
-
-```sh
-codex plugin marketplace add /absolute/path/to/pstack-codex
-codex plugin add pstack-codex@pstack-codex
-```
-
-Windows 用户把示例中的 Unix 路径换成解压后的绝对路径。只有插件文件夹的 ZIP 不含仓库 marketplace；使用上述命令时请下载完整仓库。发布新版本后，可运行 `codex plugin marketplace upgrade pstack-codex`，再运行 `codex plugin add pstack-codex@pstack-codex`，随后新建任务。命令格式如有变化，以本机 `codex plugin --help` 为准。
+第一条命令只注册 marketplace，不会安装插件。如果桌面版还看不到它，重启应用，然后在 Plugins Directory 选择 **pstack for Codex**。安装后请新建 Codex 任务，让新技能被加载。发布新版本后，可运行 `codex plugin marketplace upgrade pstack-codex`，再安装一次。
 
 ## 开始使用
 

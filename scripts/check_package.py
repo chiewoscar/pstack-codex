@@ -70,6 +70,11 @@ def main() -> None:
                 local_target = target.split("#", 1)[0]
                 assert (path.parent / local_target).exists(), f"Broken link in {path}: {target}"
 
+    for path in (ROOT / "README.md", ROOT / "README.zh-CN.md", PLUGIN / "README.md", PLUGIN / "README.zh-CN.md"):
+        content = path.read_text(encoding="utf-8")
+        assert len(content.strip()) > 1000, f"README is empty or truncated: {path}"
+        assert "codex plugin add pstack-codex@pstack-codex" in content, path
+
     print(f"OK: {len(skills)} skills, 23 playbooks, 21 principles, manifests, licenses, and marketplace")
 
 

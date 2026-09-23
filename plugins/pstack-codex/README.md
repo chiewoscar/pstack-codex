@@ -8,35 +8,14 @@ The portable `plugin.json` makes the package discoverable by hosts supporting th
 
 ## Install
 
-You need a current Codex CLI or desktop app. Git is useful for cloning. Bun is needed only when a selected `poteto-mode` playbook runs its bundled TypeScript scripts. GitHub CLI and Graphite are optional and only matter for workflows that call them.
-
-**No `npx` installer is needed.** Codex installs this package through its `codex plugin` commands. `npx` would only be relevant to a separate Node package, which this repository does not publish.
-
-### GitHub marketplace
+You need a current Codex CLI or desktop app. Bun is needed only when a selected `poteto-mode` playbook runs its bundled TypeScript scripts. GitHub CLI and Graphite are optional and only matter for workflows that call them.
 
 ```sh
 codex plugin marketplace add chiewoscar/pstack-codex
 codex plugin add pstack-codex@pstack-codex
 ```
 
-The first command registers the marketplace; it does not install the plugin. In the desktop app, restart if the marketplace is not yet visible, then find **pstack for Codex** in the Plugins Directory. Start a new Codex task after installation so its skills are discovered.
-
-### ZIP or local clone
-
-Download the repository with GitHub's **Code → Download ZIP**, or clone it:
-
-```sh
-git clone https://github.com/chiewoscar/pstack-codex.git
-```
-
-Extract the ZIP if needed. Point Codex at the **repository root**, containing `.agents/plugins/marketplace.json`:
-
-```sh
-codex plugin marketplace add /absolute/path/to/pstack-codex
-codex plugin add pstack-codex@pstack-codex
-```
-
-On Windows, use the extracted absolute folder path. A plugin-only ZIP does not contain the repository marketplace; use the full repository archive for these commands. To refresh a Git marketplace after a release, run `codex plugin marketplace upgrade pstack-codex`, then `codex plugin add pstack-codex@pstack-codex`, and start a new task. Check `codex plugin --help` if your CLI syntax differs.
+The first command registers the marketplace; it does not install the plugin. In the desktop app, restart if the marketplace is not yet visible, then find **pstack for Codex** in the Plugins Directory. Start a new Codex task after installation so its skills are discovered. To update after a release, run `codex plugin marketplace upgrade pstack-codex` and install again.
 
 ## First use
 
