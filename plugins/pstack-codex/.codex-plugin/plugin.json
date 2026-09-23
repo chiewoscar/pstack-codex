@@ -1,0 +1,39 @@
+{
+  "name": "pstack-codex",
+  "version": "0.1.1",
+  "description": "pstack engineering workflows adapted for Codex, based on irg1008/cstack.",
+  "author": {
+    "name": "chiewoscar",
+    "url": "https://github.com/chiewoscar"
+  },
+  "homepage": "https://github.com/chiewoscar/pstack-codex",
+  "repository": "https://github.com/chiewoscar/pstack-codex",
+  "license": "MIT",
+  "keywords": [
+    "pstack",
+    "cstack",
+    "engineering",
+    "review",
+    "verification",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "pstack for Codex",
+    "shortDescription": "pstack engineering workflows adapted for Codex.",
+    "longDescription": "Investigation, architecture, review, and verification workflows from pstack via cstack. Excludes Slack automations.",
+    "developerName": "chiewoscar (unofficial adaptation)",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/chiewoscar/pstack-codex",
+    "defaultPrompt": [
+      "Use pstack to explain how this subsystem works.",
+      "Review this change with pstack's interrogate workflow."
+    ],
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png"
+  }
+}

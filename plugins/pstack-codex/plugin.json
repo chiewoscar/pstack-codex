@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pstack-codex",
+  "version": "0.1.1",
+  "description": "pstack engineering workflows adapted for Codex, based on irg1008/cstack.",
+  "author": {
+    "name": "chiewoscar",
+    "url": "https://github.com/chiewoscar"
+  },
+  "homepage": "https://github.com/chiewoscar/pstack-codex",
+  "repository": "https://github.com/chiewoscar/pstack-codex",
+  "license": "MIT",
+  "keywords": [
+    "pstack",
+    "cstack",
+    "engineering",
+    "review",
+    "verification",
+    "skills"
+  ]
+}
