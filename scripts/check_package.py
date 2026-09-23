@@ -37,13 +37,13 @@ def main() -> None:
     assert (PLUGIN / "assets" / "icon.png").read_bytes() == (PLUGIN / "assets" / "logo.png").read_bytes()
 
     skills = sorted((PLUGIN / "skills").glob("*/SKILL.md"))
-    assert len(skills) == 45, f"Expected 45 skills, found {len(skills)}"
+    assert len(skills) == 47, f"Expected 47 skills, found {len(skills)}"
     for skill in skills:
         lines = skill.read_text(encoding="utf-8-sig").splitlines()
         assert lines[0] == "---", skill
         assert f"name: {skill.parent.name}" in lines[:12], skill
         assert any(line.startswith("description:") for line in lines[:12]), skill
-    assert len(list((PLUGIN / "skills" / "principle-fix-root-causes").parent.glob("principle-*/SKILL.md"))) == 21
+    assert len(list((PLUGIN / "skills" / "principle-fix-root-causes").parent.glob("principle-*/SKILL.md"))) == 23
     assert len(list((PLUGIN / "skills" / "poteto-mode" / "playbooks").glob("*.md"))) == 23
     assert not any("benny" in path.name.lower() for path in ROOT.rglob("*"))
 
@@ -75,7 +75,7 @@ def main() -> None:
         assert len(content.strip()) > 1000, f"README is empty or truncated: {path}"
         assert "codex plugin add pstack-codex@pstack-codex" in content, path
 
-    print(f"OK: {len(skills)} skills, 23 playbooks, 21 principles, manifests, licenses, and marketplace")
+    print(f"OK: {len(skills)} skills, 23 playbooks, 23 principles, manifests, licenses, and marketplace")
 
 
 if __name__ == "__main__":

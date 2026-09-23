@@ -2,7 +2,7 @@
 
 [English](README.md) · [Codex 运行方式](references/codex-runtime.md) · [来源与许可证](NOTICE.md)
 
-这是 Lauren Tan 的 [pstack](https://github.com/cursor/plugins/tree/main/pstack) 的**非官方 Codex 适配版**，以 Claude Code 移植项目 [cstack](https://github.com/irg1008/cstack) 为基础。它包含 45 个工程技能、23 个 `poteto-mode` 工作流程，以及原版 pstack 图标。独立的 `cstack-benny` Slack 自动化插件没有打包。
+这是 Lauren Tan 的 [pstack](https://github.com/cursor/plugins/tree/main/pstack) 的**非官方 Codex 适配版**，以 Claude Code 移植项目 [cstack](https://github.com/irg1008/cstack) 为基础。它包含 47 个工程技能、23 个 `poteto-mode` 工作流程，以及原版 pstack 图标。独立的 `cstack-benny` Slack 自动化插件没有打包。
 
 根目录的 `plugin.json` 使用可移植的 Agent Plugins 格式，但技能中的工具调用是按 **Codex** 编写的；其他 AI agent 需要另做运行时适配。这不是 Cursor、Claude Code 或 OpenAI 的官方版本。
 
@@ -39,10 +39,10 @@ $pstack-codex:poteto-mode 修复这个问题，验证真实行为，并准备可
 
 ## 保留和新增的能力
 
-- **来自 pstack：** 工程流程、评审角色、21 条原则、23 个 playbook 和原版图标。
+- **来自 pstack：** 工程流程、评审角色、23 条原则、23 个 playbook 和原版图标。另有两条原则取自本次核对的 2026-09-23 上游快照。
 - **来自 cstack：** 扩展的评审与编排说明、打包进来的 `deslop`、验证技能流程、决策记录和辅助脚本；这些内容继续归功于上游作者。
 - **Codex 适配新增：** 可移植清单与 Codex 展示信息、带命名空间的技能调用、统一的[运行时参数映射](references/codex-runtime.md)、按当前宿主工具决定的子 agent 调用，以及满足前置条件时可用的本地 CLI、worktree 和 Cloud 路线。
-- **未打包：** `cstack-benny`、Slack 触发器、定时 issue 分流及自动复现。调查技能仍可把聊天记录作为可选证据来源，但不会安装 Slack。
+- **未打包：** `cstack-benny`、Slack 触发器、定时 issue 分流及自动复现。上游 `make-bot-ui` 依赖 Cursor 的 Grok Bot routine 和密钥卡片 API，因此未冒充为可用的 Codex 技能。调查技能仍可把聊天记录作为可选证据来源，但不会安装 Slack。
 
 ## 与原版 agent 行为的差异
 
@@ -59,8 +59,8 @@ $pstack-codex:poteto-mode 修复这个问题，验证真实行为，并准备可
 
 ## 验证现状
 
-45 个技能全部通过定向校验，插件清单通过 Codex 校验。每个已安装技能都做过受限场景下的激活检查；真实 Codex 子 agent、异步完成、worktree 分支分离和两个草稿 PR 流程也做过测试。这些结果不代表所有可选连接器、Graphite、Cloud 任务或平台均已验证。具体证据和限制见[技能测试报告](docs/test-report.md)及[执行能力报告](docs/execution-parity.md)。
+原有 45 个技能通过定向校验及受限场景的激活检查。新加的两条原则通过结构校验，尚未分别做端到端测试。真实 Codex 子 agent、异步完成、worktree 分支分离及两个草稿 PR 流程均在旧候选版测试过；本次改过的 playbook 文字没有重新完成整套 PR 测试。具体证据和限制见[技能测试报告](docs/test-report.md)及[执行能力报告](docs/execution-parity.md)。
 
 ## 来源与许可证
 
-此次移植使用的 cstack 源码快照为 `b7e1933fa7485bb9bf937922862a7fc1fa43b738`。pstack 和 cstack 保留 Lauren Tan 的 MIT 声明；随包提供的 `deslop` 来自 Cursor Team Kit，并保留 Cursor 的 MIT 声明。详情见 [NOTICE.md](NOTICE.md) 与许可证文件。本适配版独立于上述项目。
+此次移植使用的 cstack 源码快照为 `b7e1933fa7485bb9bf937922862a7fc1fa43b738`。我们核对了原版 pstack 至 `b0b9c7a0baf8b6aa1d00bf77d4101e577d4ba411`（v0.15.4），并选择性移植可用的内容；这不是完整的逐文件同步，详情见[上游适配记录](docs/upstream.md)。[backnotprop/pstack](https://github.com/backnotprop/pstack) 是另一个跨 agent 镜像；本包主要提供 Codex 原生插件安装与经过实测的运行时映射。pstack 和 cstack 保留 Lauren Tan 的 MIT 声明；随包提供的 `deslop` 来自 Cursor Team Kit，并保留 Cursor 的 MIT 声明。详情见 [NOTICE.md](NOTICE.md) 与许可证文件。本适配版独立于上述项目。

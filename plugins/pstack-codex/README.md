@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md) · [Runtime mapping](references/codex-runtime.md) · [Credits and licenses](NOTICE.md)
 
-An **unofficial** Codex adaptation of Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack), built from the [cstack](https://github.com/irg1008/cstack) Claude Code port. It packages 45 engineering skills, 23 `poteto-mode` playbooks, and the original pstack icon. It excludes the separate `cstack-benny` Slack automation plugin.
+An **unofficial** Codex adaptation of Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack), built from the [cstack](https://github.com/irg1008/cstack) Claude Code port. It packages 47 engineering skills, 23 `poteto-mode` playbooks, and the original pstack icon. It excludes the separate `cstack-benny` Slack automation plugin.
 
 The portable `plugin.json` makes the package discoverable by hosts supporting the Agent Plugins format. The instructions and tool calls target **Codex**; other AI agents need a separate runtime adapter. This is not an official Cursor, Claude Code, or OpenAI release.
 
@@ -39,10 +39,10 @@ $pstack-codex:poteto-mode Fix this bug, prove the behavior, and prepare a review
 
 ## What this port adds and keeps
 
-- **From pstack:** the engineering workflow, role lenses, 21 principles, 23 playbooks, and original icon.
+- **From pstack:** the engineering workflow, role lenses, 23 principles, 23 playbooks, and original icon. Two principles were added from the upstream snapshot reviewed on 2026-09-23.
 - **From cstack:** expanded review and orchestration wording, vendored `deslop`, verification skill workflows, decision logs, and supporting scripts. The upstream authors remain credited.
 - **For Codex:** a portable manifest plus Codex presentation metadata, namespaced skill calls, a shared [runtime mapping](references/codex-runtime.md), host-aware subagent instructions, and explicit local CLI/worktree/Cloud routes where their preconditions hold.
-- **Excluded:** `cstack-benny` and its Slack triggers, scheduled issue triage, and reproduction automation. Investigation skills may still use chat history as an optional evidence source; they do not install Slack.
+- **Excluded:** `cstack-benny` and its Slack triggers, scheduled issue triage, and reproduction automation. The upstream `make-bot-ui` skill depends on Cursor's Grok Bot routine and secret-request APIs, so it is not packaged as a working Codex skill. Investigation skills may still use chat history as an optional evidence source; they do not install Slack.
 
 ## Differences from original agent behavior
 
@@ -59,8 +59,8 @@ The package preserves **workflow intent**, not parameter-by-parameter equivalenc
 
 ## Validation and status
 
-All 45 skills passed targeted skill validation, and the plugin manifests passed Codex validation. Each installed skill had a bounded activation check; real Codex subagents, asynchronous completion, worktree separation, and two draft PR workflows were also exercised. These checks do not prove every optional connector, Graphite path, Cloud task, or platform. See the [test report](docs/test-report.md) and [execution parity report](docs/execution-parity.md) for evidence and limits.
+The original 45 skills passed targeted validation and bounded activation checks. The two added principles passed targeted structure validation; they have not been separately exercised end to end. Real Codex subagents, asynchronous completion, worktree separation, and two draft PR workflows were exercised on the earlier candidate. The refreshed playbook text has not had another full PR trial. See the [test report](docs/test-report.md) and [execution parity report](docs/execution-parity.md) for evidence and limits.
 
 ## Source and license
 
-The cstack source snapshot used for this port is `b7e1933fa7485bb9bf937922862a7fc1fa43b738`. pstack and cstack carry Lauren Tan's MIT notice; the included `deslop` material comes from Cursor Team Kit and retains Cursor's MIT notice. See [NOTICE.md](NOTICE.md) and the bundled license files. This adaptation is independent of those projects.
+The cstack source snapshot used for this port is `b7e1933fa7485bb9bf937922862a7fc1fa43b738`. We reviewed original pstack through `b0b9c7a0baf8b6aa1d00bf77d4101e577d4ba411` (v0.15.4) and selectively ported applicable guidance. This is not a byte-for-byte or complete upstream sync; see the [upstream adaptation record](docs/upstream.md). [backnotprop/pstack](https://github.com/backnotprop/pstack) is a separate cross-agent mirror; this package focuses on Codex-native plugin installation and tested runtime mapping. pstack and cstack carry Lauren Tan's MIT notice; the included `deslop` material comes from Cursor Team Kit and retains Cursor's MIT notice. See [NOTICE.md](NOTICE.md) and the bundled license files. This adaptation is independent of those projects.
