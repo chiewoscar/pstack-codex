@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 - 2026-11-21
+
+- Corrected the documented cross-platform watcher command to the Bun launcher, which installs locked dependencies and calls the CLI. Added the real launcher help command to CI.
+
 ## 0.2.0 - 2026-11-21
 
 - Added ten Codex-adapted skills, including formal verification creation/maintenance and TLA+ statecharts. Package now contains 57 skills, 24 principles and 23 playbooks.

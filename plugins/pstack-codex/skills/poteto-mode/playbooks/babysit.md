@@ -1,6 +1,6 @@
 ### Babysit
 
-On native Windows, invoke the watcher with `bun <plugin>/skills/poteto-mode/scripts/watch-pr/cli.ts` and the same options. On WSL/Linux the Bash launcher also works. Follow the runtime mapping rather than assuming a POSIX executable works in PowerShell.
+On native Windows, invoke the watcher with `bun <plugin>/skills/poteto-mode/scripts/watch-pr/watch-pr` and the same options. Use the same Bun entry point on WSL/Linux. It installs locked dependencies before running the CLI. Follow the runtime mapping.
 
 **You own the merge frontier. Declare a mode, clear one PR at a time, stop where the human's call begins.** For "babysit this", "get it green", "all green", "merge-ready", "watch CI", "address the bugbot comments", or "check on PR X". Step 1 owns the request-to-mode mapping. This playbook replaces Codex's built-in babysit skill for these requests, so do not route there even though its description matches the same words. A request to land or ship is `playbooks/shipping.md`, which begins where this playbook ends.
 

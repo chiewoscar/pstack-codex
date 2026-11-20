@@ -30,6 +30,8 @@ jobs:
         working-directory: plugins/pstack-codex/skills/poteto-mode/scripts
       - run: bun test watch-pr
         working-directory: plugins/pstack-codex/skills/poteto-mode/scripts
+      - run: bun watch-pr/watch-pr --help
+        working-directory: plugins/pstack-codex/skills/poteto-mode/scripts
       - run: bun run typecheck
         working-directory: plugins/pstack-codex/skills/poteto-mode/scripts
       - if: runner.os == 'Linux'
