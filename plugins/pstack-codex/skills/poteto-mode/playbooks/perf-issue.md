@@ -1,5 +1,7 @@
 ### Perf issue
 
+Before measuring or reporting results, read `$pstack-codex:principle-explain-the-number`. Vet each performance claim with `$pstack-codex:benchmark-checklist`.
+
 **You own the measurement story. Plan, review, verify the numbers.** Tie every fix to a measurement, don't read source instead of measuring.
 
 1. Capture a baseline trace via the matching control skill.

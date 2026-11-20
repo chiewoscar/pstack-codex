@@ -59,4 +59,6 @@ This route gives each remote task its own configured execution environment, but 
 ## Scripts
 
 - `poteto-mode/scripts/` uses Bun. Run only when Bun exists and the requested playbook needs a script. These scripts do not create or manage agents.
+- On native Windows, run the PR watcher as `bun <plugin>/skills/poteto-mode/scripts/watch-pr/cli.ts <options>`. On WSL/Linux, `bash <plugin>/skills/poteto-mode/scripts/watch-pr/watch-pr <options>` also works. Do not execute a POSIX launcher directly in PowerShell.
+- `statechart` runs directly with `node --disable-warning=ExperimentalWarning <plugin>/skills/statechart/scripts/statechart.ts <spec> <options>` on supported Node versions. Set native `TLA2TOOLS` and `JAVA` paths for an existing TLC JAR and Java 11+. A locally provisioned JAR may live in `<Codex home>/plugins/data/pstack-codex/tools/tla2tools.jar`; the skill checks that location before relying on mise. Do not assume Windows paths work inside WSL.
 - `worktree-audit.sh` is a Bash helper built for Unix utilities. On Windows, perform a targeted native PowerShell or Git audit instead of assuming the helper works.

@@ -1,5 +1,22 @@
 # Validation record
 
+## 0.2.0 refresh, 2026-11-21
+
+| Check | Observed result | Scope and limits |
+| --- | --- | --- |
+| Package and skills | 57 skills, 24 principles and 23 playbooks; manifests, licenses, marketplace and public documentation links pass. All 57 skills pass the skill-creator validator; imported Markdown links resolve. | Structure and links do not prove agent judgment. |
+| Watcher regression before fix | Three five-second timeout cases slept 60 seconds and failed. | Single PR, queued stack and query retry paths. |
+| Native Windows watcher | 53 tests pass, one POSIX fixture test skips; strict typecheck passes. | Invoke the CLI through Bun in PowerShell. |
+| WSL watcher and orchestration | All 68 tests pass, including the POSIX gh fixture; no skips or failures. | The pre-existing orchestration suite has Unix-only fixtures and is not claimed to pass natively on Windows. |
+| Statechart core | 70 tests pass on Windows and 70 on WSL. | Chart, message and pipeline tests. Imported fixture line endings follow package LF conventions. |
+| Statechart TLC corpus in WSL | All 50 tests pass with real TLC; no skips or failures. | Passing/failing models, bounds, counterexamples, SANY errors and cleanup. |
+| Real TLC smoke | `python scripts/check_statechart.py --jar <verified-jar>` passes on Windows and WSL. Login exits 0 with holding rules; CounterDeadlock exits 1 and reports NotThree and NoDeadlock violations. Both write Mermaid charts and reports. | Node 24.22.1, Java 21, TLC 1.7.4 with its pinned SHA-256. Full upstream POSIX-launcher integration fixtures are not claimed to run on native Windows. |
+| CI | Package, watcher, strict typecheck, statechart core and real TLC smoke run on Windows and Ubuntu; orchestration additionally runs on Ubuntu. | See the workflow result for the release commit. |
+
+New skill prose, the worker contract and the revised shipping playbook have not had full end-to-end Codex agent/PR trials. Historical trials below remain separate evidence. Reproduce the real-model checks with `python scripts/check_statechart.py`; it downloads and verifies TLC when no `--jar` is supplied and requires Java and Node on PATH.
+
+## Earlier port trials
+
 Port candidate checked on Codex desktop and CLI on Windows, September 2026. This is a record of tests run for this port, not a compatibility guarantee for future hosts.
 
 | Scope | Result | Limit |

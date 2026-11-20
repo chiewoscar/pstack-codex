@@ -2,26 +2,25 @@
 
 This is an independent Codex adapter, not a mirror of every upstream file.
 
-| Source | Revision inspected or used | Role |
+| Source | Revision | Use |
 | --- | --- | --- |
-| [Lauren Tan's pstack](https://github.com/cursor/plugins/tree/main/pstack) | [`b0b9c7a0baf8b6aa1d00bf77d4101e577d4ba411`](https://github.com/cursor/plugins/commit/b0b9c7a0baf8b6aa1d00bf77d4101e577d4ba411), v0.15.4, 2026-09-23 | Original workflow and icon; source of the two principles added in this refresh. |
-| [irg1008/cstack](https://github.com/irg1008/cstack) | `b7e1933fa7485bb9bf937922862a7fc1fa43b738` | Claude Code adaptation and enhanced review, verification, decision log, and orchestration material used for the initial port. |
-| [backnotprop/pstack](https://github.com/backnotprop/pstack) | Inspected 2026-09-24 | Separate cross-agent mirror. It was not copied into this package. |
+| [pstack](https://github.com/cursor/plugins/tree/aaeb0ea3a0584995aa8f55ce44c6c5259414b896/pstack) | `aaeb0ea3a0584995aa8f55ce44c6c5259414b896`, v0.15.46 | Ten additional skills, statechart tooling and fixtures, watch-pr fixes, workflow guidance for 0.2.0. |
+| pstack previous review | `b0b9c7a0baf8b6aa1d00bf77d4101e577d4ba411`, v0.15.4 | Principles and selectively adapted verification guidance in 0.1.2. |
+| [cstack](https://github.com/irg1008/cstack) | `b7e1933fa7485bb9bf937922862a7fc1fa43b738` | Original port base, expanded review/orchestration, deslop and decision log material. |
 
-## What this refresh includes
+## Included in 0.2.0
 
-- `principle-attack-the-premise` and `principle-test-behavior-not-implementation` from the original pstack snapshot. These are general instructions, with no Cursor-only tool calls.
-- A Codex version of pstack's new setup budget choice: use supported per-role model and reasoning-effort values instead of Cursor's model slugs.
-- Verification rounds in the autopilot playbooks: review each changed patch, tie the verdict to its head, and wait for CI on the final merge-prep head.
-- The cstack enhancements and the existing Codex runtime mapping remain in place.
+- `benchmark-checklist`, `correct`, `create-formal-verification-skill`, `in-your-own-words`, `ketchup`, `maintain-formal-verification-skill`, `poteto-help`, `principle-explain-the-number`, `sharpen`, and `statechart`.
+- The watch-pr implementation and matching regression tests from this snapshot. The POSIX gh fixture test runs on Linux; native Windows covers the other watcher tests.
+- A Codex worker contract, executable evidence for interrogate, benchmark/eval routing, and bottom-up GitHub shipping. These are selective adaptations, not complete copies of the new upstream workflows.
+- Statechart tools and fixtures retain upstream behavior, with text resources normalized to the package's LF convention. Native Windows uses the documented direct Node entry point. Java/TLC may be preinstalled; mise is optional when those paths are supplied.
 
-## What this refresh does not claim
+## Preserved and excluded
 
-- It does not apply all textual edits from pstack v0.15.4. Several upstream changes shorten wording or assume Cursor's `Task`, `/goal`, `/loop`, cloud agents, Origin, Grok Bot, model catalog, and approval tools. Those cannot be copied as executable Codex commands.
-- Original pstack has a `make-bot-ui` skill that creates a Cursor Grok Bot webhook routine and requests a sender key through Cursor's secret-request card. Codex does not expose that same workflow in this package, so the skill is omitted. The port retains cstack's vendored `deslop` instead. This explains why both packages can list 47 skills while their sets differ.
-- The independent `cstack-benny` Slack automation plugin remains excluded. Optional Slack evidence references in `why` do not install or trigger an automation.
-- The two added principles have structural validation only. The older 45-skill activation and draft-PR evidence predates this refresh; see [validation record](test-report.md).
+- Kept the Codex runtime mapping, namespaced skill calls, host model defaults, authorization boundaries, deslop and the existing orchestration playbook/scripts.
+- Rewrote poteto-help for Codex instead of importing Cursor installation, Custom Modes, model rule files and built-in tools.
+- Excluded ketchup-video and make-bot-ui at the user's request. Slack automation remains excluded.
+- Did not copy upstream vendor model slugs, Cursor cloud-agent calls, arbitrary messaging grants or recurring `/loop` instructions as executable Codex behavior.
+- Formal verification reports properties, assumptions, bounds and counterexamples. It does not claim that a model proves an entire production system.
 
-## Runtime boundary
-
-Use the shared [Codex runtime mapping](../references/codex-runtime.md) for subagents, background execution, worktrees, read-only CLI runs, and optional Cloud tasks. `subagent_type`, `run_in_background`, and `isolation` are not Codex child-agent fields. Role prompts and worktrees do not enforce separate filesystem access. A separate Cloud task needs its own configured environment and authorized remote branch.
+The MIT notices remain in [NOTICE.md](../NOTICE.md). See [validation](test-report.md) for observed checks and limitations.

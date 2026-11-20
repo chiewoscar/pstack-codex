@@ -1,6 +1,6 @@
 {
   "name": "pstack-codex",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "pstack engineering workflows adapted for Codex, based on irg1008/cstack.",
   "author": {
     "name": "chiewoscar",

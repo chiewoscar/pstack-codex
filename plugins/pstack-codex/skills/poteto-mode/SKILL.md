@@ -13,6 +13,11 @@ Codex runtime: Read `../../references/codex-runtime.md` before following tool or
 
 Remaining triggers:
 
+- When delegating authorized work, include the absolute path of `worker.md` alongside the task brief. The worker must read it and the runtime mapping.
+- A measured performance or eval number → **principle-explain-the-number**; performance measurements also use **benchmark-checklist**.
+- A catch-up request → **ketchup**. Skill selection help → **poteto-help**.
+- A concurrency invariant or formal proof request → **create-formal-verification-skill**; stale existing proofs → **maintain-formal-verification-skill**. TLA+ results use **statechart**.
+
 - Nontrivial change, architecture decision, or "are we sure?" → the **how** skill.
 - About to `request_user_input_async` on a "which approach", "how should I", or "what should this do" fork → classify it before you ask. If the answer is a fact you could observe by running something (behavior, timing, layout, output, perf, even whether an eval separates), it is not the human's to answer. Sketch it via the Prototype playbook (`playbooks/prototype.md`) and let the result decide. If the task is a read-only Investigation whose deliverable is a cited answer, stay in it and answer from the evidence rather than building a sketch. Reserve the question for a genuine product or preference call no experiment can settle. The ask is the slow path. A throwaway probe usually answers faster, and it hands the human a result to react to instead of a decision to make.
 - Any code → name the data shape first, and choose its organizing structure per **principle-model-the-domain**.
@@ -57,6 +62,8 @@ Read the leaf skill in full for any principle you apply. Each entry names when i
 - **Separate Before Serializing Shared State** (**principle-separate-before-serializing-shared-state**). Concurrent actors might write the same file, branch, key, or object. Eliminate the sharing first.
 
 **Verification**
+
+- **Explain the Number** (**principle-explain-the-number**). Before measuring or trusting a measured number, identify the limiter and rule out skipped work, errors, tuning differences, and noise.
 
 - **Prove It Works** (**principle-prove-it-works**). After a task, before declaring done. Verify against the real artifact, not a proxy or "it compiles".
 - **Fix Root Causes** (**principle-fix-root-causes**). Debugging. Trace each symptom to its root cause, reproduce first, ask why until you reach it.

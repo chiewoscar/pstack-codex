@@ -2,13 +2,13 @@
 
 [简体中文](README.zh-CN.md) · [Runtime mapping](plugins/pstack-codex/references/codex-runtime.md) · [Credits and licenses](NOTICE.md)
 
-An **unofficial** Codex adaptation of Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack), built from the [cstack](https://github.com/irg1008/cstack) Claude Code port. It packages 47 engineering skills, 23 `poteto-mode` playbooks, and the original pstack icon. It excludes the separate `cstack-benny` Slack automation plugin.
+An **unofficial** Codex adaptation of Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack), built from the [cstack](https://github.com/irg1008/cstack) Claude Code port. It packages 57 engineering skills, 23 `poteto-mode` playbooks, and the original pstack icon. It excludes the separate `cstack-benny` Slack automation plugin.
 
 The portable `plugin.json` makes the package discoverable by hosts supporting the Agent Plugins format. The instructions and tool calls target **Codex**; other AI agents need a separate runtime adapter. This is not an official Cursor, Claude Code, or OpenAI release.
 
 ## Install
 
-You need a current Codex CLI or desktop app. Bun is needed only when a selected `poteto-mode` playbook runs its bundled TypeScript scripts. GitHub CLI and Graphite are optional and only matter for workflows that call them.
+You need a current Codex CLI or desktop app. Bun is needed for the bundled `poteto-mode` scripts. The optional `statechart` workflow needs a TypeScript-capable Node runtime, Java 11 or later and TLC. It can use preinstalled Java/TLC or install pinned tools with mise. See the statechart skill for setup. GitHub CLI and Graphite are optional and only matter for workflows that call them.
 
 **Codex desktop:** Open the Plugins Directory, choose **Add Marketplace → Add from a repository**, enter `https://github.com/chiewoscar/pstack-codex`, then install **pstack for Codex**.
 
@@ -43,9 +43,18 @@ $pstack-codex:poteto-mode Fix this bug, prove the behavior, and prepare a review
 | Challenge a diff and clean code or prose | `interrogate`, `blast-radius`, `deslop`, `no-comments`, `unslop` |
 | Prove app behavior and record decisions | `create-verification-skill`, `maintain-verification-skill`, `show-me-your-work` |
 
+## Added in 0.2.0
+
+- `benchmark-checklist`, `principle-explain-the-number`, `correct`, `sharpen`, `ketchup`, `poteto-help`, and `in-your-own-words`.
+- `create-formal-verification-skill`, `maintain-formal-verification-skill`, and `statechart`.
+- Watcher pagination, approval-gate classification, fork-aware stack discovery and deadline fixes; executable review evidence; shared Codex worker instructions; GitHub shipping without a Graphite requirement.
+- `ketchup-video` and `make-bot-ui` are excluded. The bundled `deslop`, Codex model defaults, runtime mapping and existing orchestration playbook remain.
+
+Windows and WSL maintain separate plugin installations. Run the marketplace upgrade and plugin add commands in each environment, then start a new chat.
+
 ## What this port adds and keeps
 
-- **From pstack:** the engineering workflow, role lenses, 23 principles, 23 playbooks, and original icon. Two principles were added from the upstream snapshot reviewed on 2026-09-23.
+- **From pstack:** the engineering workflow, role lenses, 24 principles, 23 playbooks, and original icon. Version 0.2.0 selectively ports ten more skills and watcher fixes from upstream v0.15.46.
 - **From cstack:** expanded review and orchestration wording, vendored `deslop`, verification skill workflows, decision logs, and supporting scripts. The upstream authors remain credited.
 - **For Codex:** a portable manifest plus Codex presentation metadata, namespaced skill calls, a shared [runtime mapping](plugins/pstack-codex/references/codex-runtime.md), host-aware subagent instructions, and explicit local CLI/worktree/Cloud routes where their preconditions hold.
 - **Excluded:** `cstack-benny` and its Slack triggers, scheduled issue triage, and reproduction automation. The upstream `make-bot-ui` skill depends on Cursor's Grok Bot routine and secret-request APIs, so it is not packaged as a working Codex skill. Investigation skills may still use chat history as an optional evidence source; they do not install Slack.
@@ -65,8 +74,8 @@ The package preserves **workflow intent**, not parameter-by-parameter equivalenc
 
 ## Validation and status
 
-The original 45 skills passed targeted validation and bounded activation checks. The two added principles passed targeted structure validation; they have not been separately exercised end to end. Real Codex subagents, asynchronous completion, worktree separation, and two draft PR workflows were exercised on the earlier candidate. The refreshed playbook text has not had another full PR trial. See the [test report](plugins/pstack-codex/docs/test-report.md) and [execution parity report](plugins/pstack-codex/docs/execution-parity.md) for evidence and limits.
+Version 0.2.0 adds watcher regression tests, Windows/WSL script checks, and real TLC chart generation. All 57 skills receive package structure checks. New skill prose and the revised shipping workflow have not had full end-to-end agent/PR trials. Earlier subagent and draft-PR trials remain historical evidence. See the [test report](plugins/pstack-codex/docs/test-report.md) and [execution parity report](plugins/pstack-codex/docs/execution-parity.md) for evidence and limits.
 
 ## Source and license
 
-The cstack source snapshot used for this port is `b7e1933fa7485bb9bf937922862a7fc1fa43b738`. We reviewed original pstack through `b0b9c7a0baf8b6aa1d00bf77d4101e577d4ba411` (v0.15.4) and selectively ported applicable guidance. This is not a byte-for-byte or complete upstream sync; see the [upstream adaptation record](plugins/pstack-codex/docs/upstream.md). [backnotprop/pstack](https://github.com/backnotprop/pstack) is a separate cross-agent mirror; this package focuses on Codex-native plugin installation and tested runtime mapping. pstack and cstack carry Lauren Tan's MIT notice; the included `deslop` material comes from Cursor Team Kit and retains Cursor's MIT notice. See [NOTICE.md](NOTICE.md) and the bundled license files. This adaptation is independent of those projects.
+The cstack source snapshot used for this port is `b7e1933fa7485bb9bf937922862a7fc1fa43b738`. We reviewed original pstack through `aaeb0ea3a0584995aa8f55ce44c6c5259414b896` (v0.15.46) and selectively ported applicable guidance. This is not a byte-for-byte or complete upstream sync; see the [upstream adaptation record](plugins/pstack-codex/docs/upstream.md). [backnotprop/pstack](https://github.com/backnotprop/pstack) is a separate cross-agent mirror; this package focuses on Codex-native plugin installation and tested runtime mapping. pstack and cstack carry Lauren Tan's MIT notice; the included `deslop` material comes from Cursor Team Kit and retains Cursor's MIT notice. See [NOTICE.md](NOTICE.md) and the bundled license files. This adaptation is independent of those projects.

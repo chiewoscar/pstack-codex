@@ -1,5 +1,7 @@
 ### Eval
 
+Before measuring or reporting results, read `$pstack-codex:principle-explain-the-number`. Check task completion, repeated trials, model effects and scenario relevance before choosing a winner.
+
 **You own the experiment design. Plan, blind, run, synthesize.**
 
 Evals test how a change affects agent behavior before promoting it: a new skill variant, a structural change, a prompt tweak. The failure mode is the observer effect. An agent that knows it's being evaluated behaves differently, so candidates must run blind.

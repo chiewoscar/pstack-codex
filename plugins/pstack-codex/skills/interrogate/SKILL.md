@@ -46,6 +46,12 @@ Give every reviewer the filled core template and a distinct lens. Each still app
 
 Each reviewer produces structured findings as described in the prompt template.
 
+## Verify the findings
+
+Give each adversary its own scratch path or worktree. Ask it to break the change with a failing test, repro script, command, or prototype against the real code. Each finding reports the exact command, observed output, and expected behavior. Re-run the command before calling the finding verified, and merge findings that share a root cause. Copy uncommitted changes into each review checkout so reviewers see the actual scope.
+
+A concern that cannot be executed locally stays explicitly unverified, with the missing evidence and practical consequence. It cannot become a verified blocker through reviewer agreement alone. Do not auto-apply fixes. An inconclusive run is not a pass. For a plan, a bounded prototype can test the premise.
+
 ## Step 4, Synthesize
 
 As results come back, build a unified picture:
